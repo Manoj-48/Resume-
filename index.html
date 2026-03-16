@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manoj | Professional Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #151515;
+  --card-border: #222222;
+  --soft: #9aa4b2;
+  --white: #ffffff;
+  --main: #ff6b00; 
+  --main-grad: linear-gradient(135deg, #ff6b00, #cc5500);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; scroll-behavior:smooth; }
+
+body { background:var(--bg); color:var(--white); overflow-x: hidden; }
+
+/* Grid Background Effect */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  background-image: linear-gradient(var(--card-border) 1px, transparent 1px),
+  linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container { width:90%; max-width:1200px; margin:auto; }
+
+section { padding:80px 0; }
+
+h1 { font-size:46px; line-height:1.2; font-weight: 600; }
+h2 { font-size:34px; margin-bottom:30px; font-weight: 600; }
+h3 { font-size:20px; font-weight: 500; margin-bottom: 10px; }
+p { color:var(--soft); line-height:1.7; font-size: 15px; }
+
+span.main { color:var(--main); }
+
+.btn {
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:20px;
+  padding:12px 26px;
+  background:var(--main-grad);
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:500;
+  font-size: 14px;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--soft);
+  color: var(--soft);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.05);
+  transform: none;
+  box-shadow: none;
+}
+
+nav { display:flex; justify-content:space-between; align-items:center; padding:30px 0; }
+nav a { color:#ccc; margin-left:25px; text-decoration:none; font-size:14px; font-weight: 500; transition: 0.2s; }
+nav a:hover { color:var(--main); }
+
+.logo { font-size:24px; font-weight:700; display:flex; flex-direction: column; line-height: 1; }
+.logo span { font-weight: 300; font-size: 16px; color: var(--main); }
+
+/* HERO SECTION */
+.hero { display:grid; grid-template-columns: 320px 1fr; gap:60px; align-items:center; }
+
+.profile-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  text-align: center;
+}
+.profile-card img { width:100%; border-radius:18px; margin-bottom: 20px; object-fit: cover; aspect-ratio: 4/5; }
+.profile-card h3 { font-size: 22px; margin-bottom: 5px; color: var(--white); }
+.profile-card p { font-size: 13px; margin-bottom: 20px; }
+.social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+.social-icons span { width: 35px; height: 35px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+.hero-text { display: flex; flex-direction: column; }
+.intro-label { font-size: 12px; color: var(--soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.intro-label::before { content: ""; width: 8px; height: 8px; background: var(--main); border-radius: 50%; }
+
+.tags { display: flex; gap: 12px; flex-wrap: wrap; margin: 30px 0; }
+.tag { border: 1px solid var(--card-border); padding: 8px 20px; border-radius: 30px; font-size: 12px; color: var(--soft); background: rgba(255,255,255,0.02); }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.stat-card {
+  background: linear-gradient(180deg, var(--card) 0%, rgba(255,107,0,0.1) 100%);
+  border: 1px solid var(--card-border);
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.stat-card p { font-size: 14px; margin: 0; }
+.stat-card h2 { font-size: 38px; margin: 10px 0 0 0; text-align: right; font-weight: 300; }
+
+/* CHALLENGE SECTION */
+.challenge-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
+.challenge-header h2 { margin-bottom: 5px; color: var(--main); }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px; }
+
+.card { background:var(--card); padding:26px; border-radius:20px; border: 1px solid var(--card-border); transition:.3s; display: flex; flex-direction: column; }
+.card:hover { transform:translateY(-5px); border-color: rgba(255,107,0,0.3); box-shadow:0 15px 30px rgba(0,0,0,0.5); }
+
+.status-badge { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.status-completed { background: rgba(255,107,0,0.15); color: var(--main); border: 1px solid rgba(255,107,0,0.3); }
+.status-planned { background: rgba(255,255,255,0.05); color: var(--soft); border: 1px solid var(--card-border); }
+
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.card-day { font-size: 14px; color: var(--soft); font-weight: 600; }
+
+.card-content { flex-grow: 1; }
+.pwa-list { margin-top: 15px; padding-left: 20px; color: var(--soft); font-size: 13px; line-height: 1.6; }
+
+.card-finale { grid-column: 1 / -1; background: linear-gradient(145deg, var(--card), rgba(255,107,0,0.05)); border-color: rgba(255,107,0,0.3); }
+
+/* RESUME */
+.resume-box { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.resume-card { background:var(--card); padding:30px; border-radius:20px; border: 1px solid var(--card-border); }
+.resume-card h3 { color:var(--main); margin-bottom:15px; font-size: 22px; }
+.resume-item { margin-bottom: 20px; }
+.resume-item:last-child { margin-bottom: 0; }
+
+/* CONTACT */
+.contact { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+input, textarea { width:100%; background: rgba(255,255,255,0.03); border:1px solid var(--card-border); padding:16px; border-radius:12px; color:white; margin-bottom:16px; outline: none; transition: 0.3s; }
+input:focus, textarea:focus { border-color: var(--main); }
+
+footer { text-align:center; padding:40px; color:#555; font-size: 14px; border-top: 1px solid var(--card-border); margin-top: 50px; }
+
+.fade { opacity:0; transform:translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.show { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px){
+  .hero { grid-template-columns:1fr; gap: 30px; }
+  .profile-card { max-width: 400px; margin: auto; }
+  .resume-box, .contact { grid-template-columns:1fr; }
+  h1 { font-size:36px; }
+  .card-finale { grid-column: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav>
+  <div class="logo">
+    MANOJ
+    <span>Portfolio</span>
+  </div>
+  <div class="nav-links">
+    <a href="#challenge">7 Days PWA</a>
+    <a href="#portfolio">Projects</a>
+    <a href="#resume">Resume</a>
+  </div>
+</nav>
+
+<section class="hero fade">
+  <div class="profile-card">
+    <img src="Manoj (picture).jpg" alt="Manoj">
+    <h3>Manoj</h3>
+    <p>Developer & Tech Entrepreneur</p>
+    
+    <div class="social-icons">
+      <span>📞</span>
+      <span>📧</span>
+      <span>📍</span>
+    </div>
+
+    <a href="#contact" class="btn" style="width: 100%;">Get in Touch ↗</a>
+  </div>
+
+  <div class="hero-text">
+    <div class="intro-label">Introduction</div>
+    <h1>Making Your World a Pain Free Experience!</h1>
+    <p style="margin-top: 15px;">Recent B.Com graduate and Developer based in Coimbatore, Tamil Nadu. I build scalable business solutions, e-commerce platforms, and AI-powered tools. Proficient in Termux, Linux environments, and modern web technologies.</p>
+    
+    <div class="tags">
+      <span class="tag">PWA Development</span>
+      <span class="tag">E-Commerce Architecture</span>
+      <span class="tag">Trading Systems</span>
+      <span class="tag">AI Automation</span>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <p>education</p>
+        <h2>B.Com</h2>
+      </div>
+      <div class="stat-card">
+        <p>graduated</p>
+        <h2>2025</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="challenge" class="fade">
+  <div class="challenge-header">
+    <div>
+      <h2>🔥 7 Days 7 PWAs Challenge</h2>
+      <p>Building rapid, high-performance Progressive Web Apps for business solutions over 7 days.</p>
+    </div>
+  </div>
+  
+  <div class="grid">
+    <div class="card" style="border-color: rgba(255,107,0,0.5); background: linear-gradient(145deg, var(--card), rgba(255,107,0,0.05));">
+      <div class="card-header">
+        <span class="card-day">Day 01</span>
+        <span class="status-badge status-completed">Completed</span>
+      </div>
+      <div class="card-content">
+        <h3 style="color: var(--main);">NLR Water Supply</h3>
+        <p>A comprehensive business solution designed for managing local water distribution efficiently.</p>
+      </div>
+      <a href="https://nlr365.github.io/nlr-water-supply-v0.0.1/" target="_blank" class="btn" style="width: 100%;">Launch Live App ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-day">Day 02</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3>Fashion E-commerce Hub</h3>
+        <p>Omnichannel store (Men/Women/Kids) built to sync products with 3rd-party platforms like Amazon and eBay.</p>
+        <ul class="pwa-list">
+          <li>Easy image & text uploading</li>
+          <li>Centralized inventory management</li>
+        </ul>
+      </div>
+      <button class="btn btn-outline" style="width: 100%; cursor: default;">In Progress</button>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <span class="card-day">Day 03</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3>Universal Gift Store</h3>
+        <p>A categorized shopping platform curated for all demographics, making gifting seamless and personalized.</p>
+      </div>
+      <button class="btn btn-outline" style="width: 100%; cursor: default;">Upcoming</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-day">Day 04</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3>Divine Store</h3>
+        <p>Specialized niche e-commerce for spiritual items, including malas, gemstone rings, and silver idols.</p>
+      </div>
+      <button class="btn btn-outline" style="width: 100%; cursor: default;">Upcoming</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-day">Day 05</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3>Paper Trading System</h3>
+        <p>A risk-free market simulator supporting Indian stocks, Forex, Crypto, and Commodities.</p>
+      </div>
+      <button class="btn btn-outline" style="width: 100%; cursor: default;">Upcoming</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-day">Day 06</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3>Virtual Casino Demo</h3>
+        <p>An entertainment-only platform using virtual currency. Enjoy the UI/UX of a betting app with absolutely zero real money involved.</p>
+      </div>
+      <button class="btn btn-outline" style="width: 100%; cursor: default;">Upcoming</button>
+    </div>
+
+    <div class="card card-finale">
+      <div class="card-header">
+        <span class="card-day" style="color: var(--main);">Day 07 — The Grand Finale</span>
+        <span class="status-badge status-planned">Planned</span>
+      </div>
+      <div class="card-content">
+        <h3 style="font-size: 26px;">Zoho Ecosystem Clone</h3>
+        <p style="font-size: 16px;">A massive undertaking to build a unified suite of business, productivity, and collaboration tools. This PWA will act as a central hub for managing enterprise operations, simulating the interconnected nature of the Zoho ecosystem.</p>
+      </div>
+      <button class="btn btn-outline" style="width: max-content; margin-top: 20px; cursor: default;">Upcoming Milestone</button>
+    </div>
+  </div>
+</section>
+
+<section id="resume" class="fade">
+  <h2>My Background</h2>
+  <div class="resume-box">
+    <div class="resume-card">
+      <h3>Education</h3>
+      <div class="resume-item">
+        <h4 style="font-weight: 500;">B.Com - Bachelor of Commerce</h4>
+        <p style="color: var(--main); font-size: 13px; margin-bottom: 5px;">Bharathidasan University (2022 - 2025)</p>
+        <p>Recently graduated. Combining business knowledge with technical skills in web development and automation.</p>
+      </div>
+    </div>
+    <div class="resume-card">
+      <h3>Skills</h3>
+      <div class="resume-item">
+        <h4 style="font-weight: 500;">Technical</h4>
+        <p style="color: var(--main); font-size: 13px; margin-bottom: 5px;">Web Development</p>
+        <p>HTML, CSS, JavaScript, PWA Development, Termux/Linux environments</p>
+      </div>
+      <div class="resume-item" style="margin-top: 15px;">
+        <h4 style="font-weight: 500;">Interests</h4>
+        <p style="color: var(--main); font-size: 13px; margin-bottom: 5px;">Areas of Focus</p>
+        <p>E-Commerce Systems, Trading Platforms, AI Automation, Business Solutions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Let's Work Together</h2>
+  <div class="contact">
+    <div style="background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--card-border);">
+      <h3 style="margin-bottom: 20px;">Contact Info</h3>
+      <p style="margin-bottom: 10px;"><strong>Phone:</strong> +91 90808 89363</p>
+      <p style="margin-bottom: 10px;"><strong>Location:</strong> Coimbatore, Tamil Nadu</p>
+      <p style="margin-bottom: 10px;"><strong>GitHub:</strong> <a href="https://github.com/Manoj-48" target="_blank" style="color: var(--main); text-decoration: none;">github.com/Manoj-48 ↗</a></p>
+      <p><strong>Email:</strong> <a href="mailto:devm8642757@gmail.com" style="color: var(--main); text-decoration: none;">devm8642757@gmail.com</a></p>
+    </div>
+    <div>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+      <button class="btn" style="width: 100%;">Send Message ↗</button>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Manoj — Built for growth.</footer>
+
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add("show"); }
+  });
+}, { threshold: 0.1 });
+faders.forEach(f => observer.observe(f));
+</script>
+
+</body>
+</html>
